@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'subjects',
     'teachers',
     'account',
+    'timetabling',
 ]
 
 MIDDLEWARE = [
