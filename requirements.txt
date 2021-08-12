@@ -1,6 +1,7 @@
 asgiref==3.4.1
 dj-database-url==0.5.0
 Django==3.2.6
+django-adminlte3==0.1.6
 django-heroku==0.3.1
 django-jazzmin==2.4.8
 django-sms==0.5.0
