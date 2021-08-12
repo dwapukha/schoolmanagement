@@ -33,7 +33,7 @@ class AdminPlanned(admin.ModelAdmin):
 
 @admin.register(Generated_Timetable)
 class AdminGenTimet(admin.ModelAdmin):
-    list_display = ('Day_Name', 'Time', 'Subject', 'Teacher','Class_Name', 'Stream_Name')
+    list_display = ('Day_Name', 'Teacher','Class_Name', 'Stream_Name')
 
     def Day_Name(self, obj):
         return obj.Ref_Day.Day_Name
@@ -51,7 +51,7 @@ class AdminGenTimet(admin.ModelAdmin):
     def Stream_Name(self, obj):
         return obj.Class_Stream.Stream_Name
     #Teacher.short_description = "Teacher"
-    list_filter = ['Subject','Teacher']
+    list_filter = ['Teacher']
 @admin.register(Class_Stream)
 class AdminClassStream(admin.ModelAdmin):
 

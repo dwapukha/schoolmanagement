@@ -53,15 +53,19 @@ class Planned_Timetable(models.Model):
         verbose_name_plural = "Scheduled Timetables"
 
 class Generated_Timetable(models.Model):
+    TT_Name = models.CharField(max_length=200)
     Schedule_Id = models.ForeignKey(Planned_Timetable, on_delete=models.CASCADE)
     Class_Stream = models.ForeignKey(Class_Stream, on_delete=models.CASCADE)
     Day_Name = models.ForeignKey(Ref_Day, null=True, on_delete=models.SET_NULL)
-    Time = models.ForeignKey(Ref_Period, null=True, on_delete=models.SET_NULL)
-    Subject = models.ForeignKey(Subject, null=True, on_delete=models.SET_NULL)
+    #Time = models.ForeignKey(Ref_Period, null=True, on_delete=models.SET_NULL)
+    #Subject = models.ForeignKey(Subject, null=True, on_delete=models.SET_NULL)
     Teacher = models.ForeignKey(Teacher, null=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name_plural = "Generated Timetables"
+
+    def __str__(self):
+        return 'f{self.TT_Name}'
 
 
 
@@ -77,4 +81,4 @@ class Master_Timetable(models.Model):
     class Meta:
         verbose_name_plural = "Master Timetable"
 
-
+Master_Timetable.objects.all()

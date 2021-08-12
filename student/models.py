@@ -60,3 +60,12 @@ class Student_Admission(models.Model):
 
     def __str__(self):
         return f'{self.Admin_No}'
+
+class Attendance(models.Model):
+    Att_Date = models.DateField()
+    Admin_No = models.ForeignKey(Student_Registration, on_delete=models.CASCADE)
+    Status = models.BooleanField()
+    remark = models.TextField()
+
+    def __str__(self):
+        return f'{self.Att_Date},{self.Status}'
