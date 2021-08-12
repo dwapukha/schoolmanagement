@@ -25,9 +25,17 @@ class Subject(models.Model):
 
     )
     category =models.CharField(max_length=5, choices=CATEGORY, default='L')
+
+    def __str__(self):
+        return f'{self.name}, {self.category}'
+
 class TeacherRole(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=300)
+
+    def __str__(self):
+        return f'{self.name}, {self.description}'
+
 
 class Teacher(models.Model):
     TSC_Number = models.CharField(max_length=100, unique=True, primary_key=True)
@@ -40,10 +48,19 @@ class Teacher(models.Model):
     date_of_birth = models.DateField()
     subject = models.ManyToManyField('Subject', blank=True)
 
+    def __str__(self):
+        return f'{self.name}, {self.TSC_Number}'
+
 class Assign_Role(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     Role = models.ManyToManyField(TeacherRole, blank=True, null=True)
     StartDate = models.DateField()
     Duration = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.Role}, {self.StartDate}'
 class StudentRole(models.Model):
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f'{self.name}'

@@ -3,13 +3,23 @@ from teachers.models import Subject, Teacher, TeacherRole, Assign_Role
 # Register your models here.
 @admin.register(Subject)
 class adminSubject(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'category')
+    list_filter = ['category']
 @admin.register(Teacher)
 class adminTeacher(admin.ModelAdmin):
-    pass
+    list_display = ('name','gender','subject')
+    list_filter = ['gender']
+
+    def subject(self, obj):
+        return obj.Subject.name
+
 @admin.register(TeacherRole)
 class adminTeacherRole(admin.ModelAdmin):
-    pass
+    list_display = ('name','description')
 @admin.register(Assign_Role)
 class adminAssign(admin.ModelAdmin):
-    pass
+    list_display = ('teacher', 'StartDate')
+    list_filter = ['StartDate']
+
+    def teacher(self, obj):
+        return obj.Teacher.name
