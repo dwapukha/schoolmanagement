@@ -27,3 +27,9 @@ class ledger_entry(models.Model):
 
     class Meta:
         verbose_name_plural = 'Legder Entries'
+
+class Set_School_Fee(models.Model):
+    Fee_Name = models.CharField(max_length=100)
+    Amount = models.PositiveIntegerField(blank=False)
+    class Meta:
+        verbose_name_plural = 'Add School Fees'

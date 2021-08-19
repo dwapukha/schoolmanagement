@@ -29,7 +29,7 @@ class AdminPlanned(admin.ModelAdmin):
          return obj.Ref_Period.id
      def Subject(self, obj):
          return obj.Ref_Subject.Subject
-
+Planned_Timetable.objects.all()
 
 @admin.register(Generated_Timetable)
 class AdminGenTimet(admin.ModelAdmin):
@@ -57,3 +57,4 @@ class AdminClassStream(admin.ModelAdmin):
 
     list_display = ('Class_Name', 'Stream_Name')
     list_filter = ['Class_Name', 'Stream_Name']
+Class_Stream.objects.all()
