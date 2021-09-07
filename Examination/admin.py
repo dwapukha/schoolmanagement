@@ -1,11 +1,18 @@
 from django.contrib import admin
+from django import forms
 from  django.db.models import Sum, F
 from Examination.models import Exam_Result, Grade, Exam,Exam_Type
 # Register your models here.
 
+
 @admin.register(Exam_Result)
 class AdminExamResults(admin.ModelAdmin):
-    list_display = ('subject', 'Catonemarks','Cattwomarks', 'Mainmarks')
+
+    list_display = ('subject', 'Cat_One','Cat_Two', 'Main_Marks', 'total', 'Grade')
+
+
+
+
 
 
 @admin.register(Grade)
