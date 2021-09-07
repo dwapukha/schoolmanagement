@@ -1,5 +1,5 @@
 from django.contrib import admin
-from account.models import Account, transaction, ledger_entry,Set_School_Fee
+from account.models import Account, transaction, ledger_entry,Set_School_Fee, Pay_Fee
 
 # Register your models here.
 @admin.register(Account)
@@ -17,3 +17,8 @@ class Adminledger_entry(admin.ModelAdmin):
 @admin.register(Set_School_Fee)
 class AdminAddfee(admin.ModelAdmin):
     list_display = ('Fee_Name', 'Amount')
+
+@admin.register(Pay_Fee)
+class AdminPay(admin.ModelAdmin):
+    list_display = ('Fee_Name', 'Amount')
+    #fieldsets = ('Fee_Name', 'Amount')

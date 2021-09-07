@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'timetabling',
     'Examination',
     'transport',
+    'school_projects',
+    'school_Activities',
 ]
 
 MIDDLEWARE = [

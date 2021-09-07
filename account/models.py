@@ -33,3 +33,15 @@ class Set_School_Fee(models.Model):
     Amount = models.PositiveIntegerField(blank=False)
     class Meta:
         verbose_name_plural = 'Add School Fees'
+
+    def __str__(self):
+        return f'{self.Fee_Name},{self.Amount}'
+
+class Pay_Fee(models.Model):
+    Fee_Name = models.ForeignKey(Set_School_Fee, on_delete=models.CASCADE)
+    Amount = models.PositiveIntegerField(blank=True)
+    class Meta:
+        verbose_name_plural = 'Pay Fees'
+
+    def __str__(self,obj):
+        return f'{Set_School_Fee.Fee_Name}'

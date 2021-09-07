@@ -1,5 +1,5 @@
 from django.contrib import admin
-from transport.models import Conductor,Bus, Driver,Route
+from transport.models import Conductor, Bus, Driver, Route
 
 # Register your models here.
 @admin.register(Conductor)

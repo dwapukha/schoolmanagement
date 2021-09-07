@@ -53,7 +53,7 @@ class Teacher(models.Model):
 
 class Assign_Role(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
-    Role = models.ManyToManyField(TeacherRole, blank=True, null=True)
+    Role = models.ManyToManyField(TeacherRole, blank=True)
     StartDate = models.DateField()
     Duration = models.IntegerField()
 
