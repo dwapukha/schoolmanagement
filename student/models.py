@@ -15,7 +15,7 @@ class Student_Registration(models.Model):
 
     )
     gender = models.CharField(max_length=1, choices=GENDER, default= 'M')
-    date_of_Admin = models.DateField(auto_now_add=True, editable=False)
+    #date_of_Admin = models.DateField(auto_now_add=True, editable=False)
     county = models.CharField(max_length=100)
     kcpe_marks = models.IntegerField
     passport = models.ImageField(upload_to='passports/', height_field=None, width_field=None, max_length=100)
