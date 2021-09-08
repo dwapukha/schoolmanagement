@@ -67,12 +67,15 @@ class Dormetry(models.Model):
 
 class Student_Admission(models.Model):
     Admin_No = models.CharField(max_length=40)
-    studenid = models.ForeignKey('Student_Registration', on_delete=models.RESTRICT)
+    studenid = models.ForeignKey(Student_Registration, on_delete=models.RESTRICT)
     Class_room = models.ForeignKey(Class_Room, on_delete=models.CASCADE)
+
+    #Student_Name= property(_get_FullName)
     Student_Dorm = models.ForeignKey(Dormetry, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.Admin_No}'
+
 
 class Attendance(models.Model):
     Att_Date = models.DateField()

@@ -19,7 +19,10 @@ class AdminDorm(admin.ModelAdmin):
 
 @admin.register(Student_Admission)
 class AdminStudAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('Admin_No',)
+
+    #def Student_Name(obj):
+     #   return f'{obj.Student_Registration.last_name}'
 
 @admin.register(ID_Card)
 class AdminID_Card(admin.ModelAdmin):

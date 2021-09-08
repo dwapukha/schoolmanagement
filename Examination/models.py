@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import Avg, Count, Min, Sum
+from django.core.validators import MinValueValidator, MaxValueValidator
 from student.models import Student_Admission
 from teachers.models import Subject
 # Create your models here.
@@ -27,15 +29,20 @@ class Grade(models.Model):
 
 class Exam_Result(models.Model):
     examID = models.ForeignKey(Exam, on_delete=models.CASCADE)
-    studentID = models.ForeignKey(Student_Admission, on_delete=models.CASCADE)
+    Admin_No = models.ForeignKey(Student_Admission, on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    Cat_One = models.IntegerField(null=True, default=0)
-    Cat_Two = models.IntegerField(null=True, default=0)
-    Main_Marks = models.IntegerField(null=True, default=0)
+    Cat_One = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(30)],default=0, help_text="Cat Mark is 0-30")
+    Cat_Two = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(30)], null=True, default=0,help_text="Cat Mark is 0-30")
+    def _get_average(self):
+        return ((self.Cat_One + self.Cat_Two)/2)
+
+    Average_Cat = property(_get_average)
+
+    Main_Marks = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(70)], default=0,help_text="Cat Mark is 0-70")
     #Grade = models.CharField(max_length=100, editable=False, blank=True)
 
     def _get_total(self):
-        return self.Cat_One + self.Cat_Two + self.Main_Marks
+        return self.Average_Cat + self.Main_Marks
     total = property(_get_total)
 
 
@@ -68,6 +75,6 @@ class Exam_Result(models.Model):
 
 
     def __str__(self):
-        return f'{self.studentID}, {self.Cat_One}, {self.Cat_Two},{self.Main_Marks}'
+        return f' {self.Cat_One}, {self.Cat_Two},{self.Main_Marks}'
 
 Exam_Result.objects.all()
